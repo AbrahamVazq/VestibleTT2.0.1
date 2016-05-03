@@ -10,12 +10,12 @@ SdFile archivo;
 //  Variables para Sensor de Pulso
 
 int pulsePin = A0;                 // Pulse Sensor purple wire connected to analog pin 0
+int tempPin = A2;                  // Definimos la entrada anlogica en pin A0 
 int blinkPin = 13;                // pin to blink led at each beat
 int fadePin = 5;                  // pin to do fancy classy fading blink at each beat
 int fadeRate = 0;                 // used to fade LED on with PWM on fadePin
 ////////// Variables para el sensor de Temp ////////
 float tempC;
-int tempPin = A2; // Definimos la entrada anlogica en pin A0 
 const int chipSelect = 4; 
 const int botonPin = 8; 
 
