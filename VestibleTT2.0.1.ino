@@ -160,7 +160,15 @@ void temperatura()
   archivo.print(tempC);
   archivo.println(+ ",");
 
-/* Comprueba si el boton de pausa ha sido pulsado*/
+  archivo.close();
+   delay(1000);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void interrumpe()
+{
+  /* Comprueba si el boton de pausa ha sido pulsado*/
   botonEstado = digitalRead(botonPin); 
   
   if(botonEstado == HIGH)
@@ -178,10 +186,5 @@ void temperatura()
   {
     ;
   }
-
-  archivo.close();
-   delay(1000);
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////
 
