@@ -82,9 +82,21 @@ void setup()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //  Where the Magic Happens
-void loop(){      
-
+void loop()
+{      
 ///////////////////// S E N S O R · T E M P E R A T U R A /////////////////////////////
+/* Comprueba si el boton de pausa ha sido pulsado*/
+  botonEstado = digitalRead(botonPin); 
+  
+  if(botonEstado == HIGH)
+  {
+    interumpe();
+  }
+  else
+  {
+    ;
+  }
+
  temperatura();
  delay(500);
  
@@ -101,6 +113,8 @@ void loop(){
      
   ledFadeToBeat();                      // Makes the LED Fade Effect Happen 
   delay(20); 
+
+  
     
 }
 
@@ -168,11 +182,6 @@ void temperatura()
 
 void interrumpe()
 {
-  /* Comprueba si el boton de pausa ha sido pulsado*/
-  botonEstado = digitalRead(botonPin); 
-  
-  if(botonEstado == HIGH)
-  {
     digitalWrite(7, HIGH);
     delay(500);
     digitalWrite(7,LOW);
@@ -181,10 +190,6 @@ void interrumpe()
     archivo.println(+ "]");
     archivo.println(+ "[");
     delay(5000);
-  }
-  else
-  {
-    ;
-  }
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
