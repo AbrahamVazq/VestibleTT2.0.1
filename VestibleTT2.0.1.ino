@@ -101,14 +101,24 @@ void loop()
  delay(500);
  
  serialOutput() ; 
+
+ Serial.print(QS);
   
-    if (QS == true){     // A Heartbeat Was Found
+    if (QS == true)    // A Heartbeat Was Found
+    {     
                        // BPM and IBI have been Determined
                        // Quantified Self "QS" true when arduino finds a heartbeat
+
+        Serial.print(QS);
+         
         fadeRate = 255;         // Makes the LED Fade Effect Happen
                                 // Set 'fadeRate' Variable to 255 to fade LED with pulse
         serialOutputWhenBeatHappens();   // A Beat Happened, Output that to serial.     
         QS = false;                      // reset the Quantified Self flag for next time    
+  }
+  else
+  {
+    Serial.print(QS);
   }
      
   ledFadeToBeat();                      // Makes the LED Fade Effect Happen 
