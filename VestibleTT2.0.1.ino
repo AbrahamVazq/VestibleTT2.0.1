@@ -85,11 +85,23 @@ void setup()
 void loop(){      
 
 ///////////////////// S E N S O R · T E M P E R A T U R A /////////////////////////////
- Temperatura();
- delay(500);
- Pulso(); 
+ temperatura();
  delay(500);
  
+ serialOutput() ; 
+  
+    if (QS == true){     // A Heartbeat Was Found
+                       // BPM and IBI have been Determined
+                       // Quantified Self "QS" true when arduino finds a heartbeat
+        fadeRate = 255;         // Makes the LED Fade Effect Happen
+                                // Set 'fadeRate' Variable to 255 to fade LED with pulse
+        serialOutputWhenBeatHappens();   // A Beat Happened, Output that to serial.     
+        QS = false;                      // reset the Quantified Self flag for next time    
+  }
+     
+  ledFadeToBeat();                      // Makes the LED Fade Effect Happen 
+  delay(20); 
+    
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -172,22 +184,4 @@ void temperatura()
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Pulso()
-{
-  
-  serialOutput() ; 
-  
-    if (QS == true){     // A Heartbeat Was Found
-                       // BPM and IBI have been Determined
-                       // Quantified Self "QS" true when arduino finds a heartbeat
-        fadeRate = 255;         // Makes the LED Fade Effect Happen
-                                // Set 'fadeRate' Variable to 255 to fade LED with pulse
-        serialOutputWhenBeatHappens();   // A Beat Happened, Output that to serial.     
-        QS = false;                      // reset the Quantified Self flag for next time    
-  }
-     
-  ledFadeToBeat();                      // Makes the LED Fade Effect Happen 
-  delay(20);                            //  take a break
-
-}
 
