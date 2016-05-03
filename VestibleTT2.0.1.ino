@@ -84,8 +84,28 @@ void setup()
 //  Where the Magic Happens
 void loop(){      
 
-  ///////////////////// S E N S O R · T E M P E R A T U R A /////////////////////////////
-  /*Creamos una objeto t de la clase tiempo */
+///////////////////// S E N S O R · T E M P E R A T U R A /////////////////////////////
+ Temperatura();
+ delay(500);
+ Pulso(); 
+ delay(500);
+ 
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void ledFadeToBeat()
+{
+    fadeRate -= 15;                         //  set LED fade value
+    fadeRate = constrain(fadeRate,0,255);   //  keep LED fade value from going into negative numbers!
+    analogWrite(fadePin,fadeRate);          //  fade LED
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void temperatura()
+{
+   /*Creamos una objeto t de la clase tiempo */
     time_t t = now();
   /* Leemos el valor desde el sensor */
     tempC = analogRead(tempPin);
@@ -147,8 +167,14 @@ void loop(){
     ;
   }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////
+  archivo.close();
+   delay(1000);
+}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Pulso()
+{
+  
   serialOutput() ; 
   
     if (QS == true){     // A Heartbeat Was Found
@@ -163,19 +189,5 @@ void loop(){
   ledFadeToBeat();                      // Makes the LED Fade Effect Happen 
   delay(20);                            //  take a break
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  archivo.close();
-   delay(1000);
-  
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-void ledFadeToBeat()
-{
-    fadeRate -= 15;                         //  set LED fade value
-    fadeRate = constrain(fadeRate,0,255);   //  keep LED fade value from going into negative numbers!
-    analogWrite(fadePin,fadeRate);          //  fade LED
 }
 
