@@ -30,8 +30,9 @@ void serialOutputWhenBeatHappens(){
 //  Sends Data to Pulse Sensor Processing App, Native Mac App, or Third-party Serial Readers. 
 void sendDataToSerial(char symbol, int data ){
     Serial.print(symbol);
-
-    Serial.println(data);                
+    archivo.print(symbol);
+    Serial.println(data);  
+    archivo.println(data);              
   }
 
 //  Code to Make the Serial Monitor Visualizer Work
