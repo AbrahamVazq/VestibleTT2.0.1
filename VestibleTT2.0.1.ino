@@ -90,7 +90,7 @@ void loop()
   
   if(botonEstado == HIGH)
   {
-    interumpe();
+    interrumpe();
   }
   else
   {
