@@ -168,8 +168,8 @@ void temperatura()
     digitalWrite(7, HIGH);
     delay(500);
     digitalWrite(7,LOW);
-    Serial.print(+ "]");
-    Serial.print(+ "[");
+    Serial.println(+ "]");
+    Serial.println(+ "[");
     archivo.println(+ "]");
     archivo.println(+ "[");
     delay(5000);
