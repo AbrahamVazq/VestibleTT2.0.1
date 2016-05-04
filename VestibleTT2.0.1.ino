@@ -14,11 +14,9 @@ int tempPin = A2;                  // Definimos la entrada anlogica en pin A0
 int blinkPin = 13;                // pin to blink led at each beat
 int fadePin = 5;                  // pin to do fancy classy fading blink at each beat
 int fadeRate = 0;                 // used to fade LED on with PWM on fadePin
-////////// Variables para el sensor de Temp ////////
-float tempC;
-const int chipSelect = 4; 
-const int botonPin = 8; 
-
+float tempC;                      // variable para el dato del Sensor
+const int chipSelect = 4;         // Pin para el ChipSelect
+const int botonPin = 8;           // Boton de Pausa para separar datos
 int botonEstado = 0;  //Este es el estado inicial del boton de pausa
 
 // Volatile Variables, used in the interrupt service routine!
@@ -92,50 +90,30 @@ void loop()
   {
     interrumpe();
   }
-
+  else
+  {
     
-  if (QS == true)
-  {   
-      Serial.println("");
-      Serial.println("Se encontro el sensor de pulso");
-      if(Pulse == true) // A Heartbeat Was Found
-      {
-                       // BPM and IBI have been Determined
-                       // Quantified Self "QS" true when arduino finds a heartbeat
-        fadeRate = 255;         // Makes the LED Fade Effect Happen
-                                // Set 'fadeRate' Variable to 255 to fade LED with pulse
-        serialOutputWhenBeatHappens();   // A Beat Happened, Output that to serial.     
-        QS = false;                      // reset the Quantified Self flag for next time     
-      }
-  }
+    if (QS == true)
+    {   
+        Serial.println("");
+        Serial.println("Se encontro el sensor de pulso");
+        if(Pulse == true) // A Heartbeat Was Found
+        {
+                         // BPM and IBI have been Determined
+                         // Quantified Self "QS" true when arduino finds a heartbeat
+          fadeRate = 255;         // Makes the LED Fade Effect Happen
+                                  // Set 'fadeRate' Variable to 255 to fade LED with pulse
+          serialOutputWhenBeatHappens();   // A Beat Happened, Output that to serial.     
+          QS = false;                      // reset the Quantified Self flag for next time     
+        }
+    }
      
   ledFadeToBeat();                      // Makes the LED Fade Effect Happen 
   delay(20);  
 
-  botonEstado = digitalRead(botonPin); 
-  
-  if(botonEstado == HIGH)
-  {
-    interrumpe();
-  }
-
   temperatura();
-
-  botonEstado = digitalRead(botonPin); 
-  
-  if(botonEstado == HIGH)
-  {
-    interrumpe();
-  }
-
-/* 
-  else
-  {
-    Serial.print("No se encontro el sensor de pulso");
-    Serial.print("\n");   
-  }
-  delay(20);*/
-  
+  delay(20);
+   }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
