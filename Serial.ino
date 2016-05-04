@@ -17,10 +17,9 @@ void serialOutput(){   // Decide How To Output Serial.
 //  Decides How To OutPut BPM and IBI Data
 void serialOutputWhenBeatHappens(){    
  if (serialVisual == true){            //  Code to Make the Serial Monitor Visualizer Work
-    Serial.print("*** Latido Ocurriendo *** ");  //ASCII Art Madness
-    Serial.print("BPM: ");
-    Serial.print(BPM);
-    Serial.print("  ");
+    Serial.println("*** Latido Ocurriendo *** ");  //ASCII Art Madness
+    Serial.println("BPM: ");
+    Serial.println(BPM);
  } else{
         sendDataToSerial('B',BPM);   // send heart rate with a 'B' prefix
         sendDataToSerial('Q',IBI);   // send time between beats with a 'Q' prefix
@@ -46,6 +45,7 @@ const int sensorMax = 1024;    // sensor maximum, discovered through experiment
 
   // do something different depending on the 
   // range value:
+  /*
   switch (range) {
   case 0:     
     Serial.println("");     /////ASCII Art Madness
@@ -84,5 +84,5 @@ const int sensorMax = 1024;    // sensor maximum, discovered through experiment
     Serial.println("--------------|-----------------------");
     break;
   
-  } 
+  } */
 }
